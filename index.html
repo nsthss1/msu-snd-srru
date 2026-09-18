@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSU-SND SRRU | School-Based Ready Reserve Unit</title>
+<meta name="description" content="Official recruitment website of the MSU-SND School-Based Ready Reserve Unit (SRRU). To serve the country doesn't need to be a soldier.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --green: #1a5c2a;
+    --green-light: #2d7a3f;
+    --gold: #d4a017;
+    --gold-light: #f0c040;
+    --red: #b91c1c;
+    --dark: #0f1a12;
+    --dark-2: #1a2b1f;
+    --white: #ffffff;
+    --off-white: #f5f7f5;
+    --gray: #6b7280;
+    --text: #1f2937;
+    --text-light: #e5e7eb;
+    --shadow: 0 4px 20px rgba(0,0,0,0.12);
+    --shadow-lg: 0 10px 40px rgba(0,0,0,0.2);
+    --radius: 12px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: var(--off-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+  }
+
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  img { max-width: 100%; display: block; }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(15, 26, 18, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid var(--gold);
+  }
+
+  .navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--white);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+  }
+
+  .nav-logo .badge {
+    background: var(--gold);
+    color: var(--dark);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px; left: 0;
+    width: 0; height: 2px;
+    background: var(--gold);
+    transition: width 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(135deg, rgba(15,26,18,0.92), rgba(26,92,42,0.85)),
+                url('https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=1600&q=80') center/cover no-repeat;
+    padding: 100px 20px 60px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(212,160,23,0.03) 40px,
+      rgba(212,160,23,0.03) 80px
+    );
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--dark);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+    animation: fadeInDown 0.8s ease;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    color: var(--white);
+    margin-bottom: 16px;
+    animation: fadeInUp 0.8s ease 0.2s both;
+  }
+
+  .hero h1 span { color: var(--gold-light); }
+
+  .hero p.tagline {
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    color: var(--text-light);
+    margin-bottom: 12px;
+    font-style: italic;
+    animation: fadeInUp 0.8s ease 0.4s both;
+  }
+
+  .hero p.sub {
+    font-size: 1rem;
+    color: rgba(229,231,235,0.8);
+    margin-bottom: 36px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeInUp 0.8s ease 0.6s both;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.8s ease 0.8s both;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--dark);
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212,160,23,0.4);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    border-color: var(--white);
+  }
+
+  .btn-outline:hover {
+    background: var(--white);
+    color: var(--dark);
+    transform: translateY(-3px);
+  }
+
+  section { padding: 80px 0; }
+
+  .section-title {
+    text-align: center;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--dark);
+    margin-bottom: 12px;
+  }
+
+  .section-subtitle {
+    text-align: center;
+    color: var(--gray);
+    max-width: 700px;
+    margin: 0 auto 50px;
+    font-size: 1rem;
+  }
+
+  .section-title .accent { color: var(--green); }
+
+  .what-is { background: var(--white); }
+
+  .what-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+  }
+
+  .what-text h3 {
+    color: var(--green);
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+
+  .what-text p {
+    margin-bottom: 16px;
+    color: #374151;
+  }
+
+  .legal-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .legal-badge {
+    background: var(--off-white);
+    border-left: 4px solid var(--gold);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .what-image {
+    background: linear-gradient(135deg, var(--green), var(--dark-2));
+    border-radius: var(--radius);
+    padding: 40px;
+    color: var(--white);
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .what-image .shield {
+    font-size: 5rem;
+    margin-bottom: 16px;
+  }
+
+  .what-image h4 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: var(--gold-light);
+  }
+
+  .what-image p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    opacity: 0.9;
+  }
+
+  .why-join { background: var(--off-white); }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .benefit-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 32px 24px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border-top: 4px solid var(--green);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 4px;
+    background: linear-gradient(90deg, var(--green), var(--gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .benefit-card:hover::before { transform: scaleX(1); }
+
+  .benefit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .benefit-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+  }
+
+  .benefit-card h4 {
+    color: var(--green);
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+  }
+
+  .benefit-card p {
+    font-size: 0.92rem;
+    color: #4b5563;
+  }
+
+  .trainings {
+    background: var(--dark);
+    color: var(--white);
+  }
+
+  .trainings .section-title { color: var(--white); }
+  .trainings .section-title .accent { color: var(--gold-light); }
+  .trainings .section-subtitle { color: rgba(229,231,235,0.7); }
+
+  .training-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+  }
+
+  .training-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(212,160,23,0.3);
+    border-radius: var(--radius);
+    padding: 32px 26px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .training-card:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: var(--gold);
+    transform: translateY(-6px);
+  }
+
+  .training-card .t-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+  }
+
+  .training-card h4 {
+    color: var(--gold-light);
+    font-size: 1.2rem;
+    margin-bottom: 14px;
+  }
+
+  .training-card ul {
+    margin-bottom: 18px;
+  }
+
+  .training-card ul li {
+    font-size: 0.9rem;
+    color: rgba(229,231,235,0.85);
+    padding: 5px 0 5px 22px;
+    position: relative;
+  }
+
+  .training-card ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .training-note {
+    font-size: 0.82rem;
+    color: rgba(229,231,235,0.6);
+    font-style: italic;
+    border-top: 1px solid rgba(212,160,23,0.2);
+    padding-top: 14px;
+    margin-top: 14px;
+  }
+
+  .training-card .tag {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 50px;
+    text-transform: uppercase;
+  }
+
+  .training-card .tag.chance {
+    background: var(--red);
+    color: var(--white);
+  }
+
+  .who-join { background: var(--white); }
+
+  .requirements-box {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--off-white);
+    border-radius: var(--radius);
+    padding: 40px;
+    box-shadow: var(--shadow);
+    border-left: 6px solid var(--gold);
+  }
+
+  .requirements-box h3 {
+    color: var(--green);
+    font-size: 1.4rem;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .req-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 1rem;
+  }
+
+  .req-list li:last-child { border-bottom: none; }
+
+  .req-check {
+    flex-shrink: 0;
+    width: 26px; height: 26px;
+    background: var(--green);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+
+  .not-militarization {
+    background: linear-gradient(135deg, #1a5c2a, #0f1a12);
+    color: var(--white);
+    padding: 70px 20px;
+    text-align: center;
+  }
+
+  .not-militarization h2 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    color: var(--gold-light);
+    margin-bottom: 20px;
+  }
+
+  .not-militarization p {
+    max-width: 800px;
+    margin: 0 auto 16px;
+    font-size: 1.05rem;
+    color: rgba(229,231,235,0.9);
+    line-height: 1.8;
+  }
+
+  .not-militarization .motto {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    color: var(--gold);
+    margin-top: 30px;
+    letter-spacing: 1px;
+  }
+
+  .supervision {
+    background: linear-gradient(135deg, var(--green), var(--dark-2));
+    color: var(--white);
+  }
+
+  .supervision .section-title { color: var(--white); }
+  .supervision .section-subtitle { color: rgba(229,231,235,0.8); }
+
+  .super-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .super-card {
+    background: rgba(255,255,255,0.1);
+    border-radius: var(--radius);
+    padding: 28px 20px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: all 0.3s ease;
+  }
+
+  .super-card:hover {
+    background: rgba(255,255,255,0.18);
+    transform: translateY(-5px);
+    border-color: var(--gold);
+  }
+
+  .super-card .s-icon {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+  }
+
+  .super-card h4 {
+    font-size: 1rem;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+  }
+
+  .super-card p {
+    font-size: 0.85rem;
+    color: rgba(229,231,235,0.85);
+  }
+
+  .how-join { background: var(--off-white); }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    counter-reset: step;
+  }
+
+  .step {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 32px 22px 26px;
+    text-align: center;
+    position: relative;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    counter-increment: step;
+  }
+
+  .step::before {
+    content: counter(step);
+    position: absolute;
+    top: -18px; left: 50%;
+    transform: translateX(-50%);
+    width: 40px; height: 40px;
+    background: var(--gold);
+    color: var(--dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 12px rgba(212,160,23,0.4);
+  }
+
+  .step:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .step h4 {
+    color: var(--green);
+    font-size: 1rem;
+    margin-bottom: 10px;
+    margin-top: 8px;
+  }
+
+  .step p {
+    font-size: 0.88rem;
+    color: #4b5563;
+  }
+
+  .reminders { background: var(--white); }
+
+  .quote-box {
+    background: var(--off-white);
+    border-left: 6px solid var(--green);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+  }
+
+  .quote-box p {
+    font-size: 1rem;
+    font-style: italic;
+    color: #374151;
+    margin-bottom: 10px;
+  }
+
+  .quote-box .source {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--green);
+    font-style: normal;
+  }
+
+  .warning-box {
+    background: #fef2f2;
+    border-left: 6px solid var(--red);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 24px 32px;
+    box-shadow: var(--shadow);
+  }
+
+  .warning-box p {
+    font-size: 0.92rem;
+    color: #7f1d1d;
+    margin: 0;
+  }
+
+  .contact {
+    background: var(--dark);
+    color: var(--white);
+  }
+
+  .contact .section-title { color: var(--white); }
+  .contact .section-title .accent { color: var(--gold-light); }
+  .contact .section-subtitle { color: rgba(229,231,235,0.7); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .contact-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(212,160,23,0.3);
+    border-radius: var(--radius);
+    padding: 28px 22px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .contact-card:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: var(--gold);
+    transform: translateY(-5px);
+  }
+
+  .contact-card .c-icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+
+  .contact-card h4 {
+    color: var(--gold-light);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+  }
+
+  .contact-card p {
+    font-size: 0.88rem;
+    color: rgba(229,231,235,0.85);
+    word-break: break-word;
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(212,160,23,0.4);
+    color: var(--white);
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .social-btn:hover {
+    background: var(--gold);
+    color: var(--dark);
+    border-color: var(--gold);
+    transform: translateY(-3px);
+  }
+
+  .cta-banner {
+    background: linear-gradient(135deg, var(--gold), #b8860b);
+    padding: 60px 20px;
+    text-align: center;
+    color: var(--dark);
+  }
+
+  .cta-banner h2 {
+    font-size: clamp(1.6rem, 4vw, 2.5rem);
+    margin-bottom: 12px;
+  }
+
+  .cta-banner p {
+    font-size: 1.05rem;
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+
+  .cta-banner .btn-dark {
+    background: var(--dark);
+    color: var(--white);
+    padding: 16px 40px;
+  }
+
+  .cta-banner .btn-dark:hover {
+    background: var(--dark-2);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  footer {
+    background: #0a120c;
+    color: rgba(229,231,235,0.6);
+    padding: 40px 20px 30px;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+
+  footer .footer-logo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  footer p { margin-bottom: 8px; }
+
+  footer .footer-note {
+    font-size: 0.78rem;
+    color: rgba(229,231,235,0.4);
+    max-width: 800px;
+    margin: 20px auto 0;
+    line-height: 1.6;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 900px) {
+    .what-grid { grid-template-columns: 1fr; }
+    .nav-links {
+      position: fixed;
+      top: 70px; right: -100%;
+      flex-direction: column;
+      background: rgba(15,26,18,0.98);
+      width: 260px;
+      height: calc(100vh - 70px);
+      padding: 40px 30px;
+      gap: 24px;
+      transition: right 0.3s ease;
+      align-items: flex-start;
+    }
+    .nav-links.open { right: 0; }
+    .nav-toggle { display: block; }
+  }
+
+  @media (max-width: 600px) {
+    section { padding: 60px 0; }
+    .requirements-box { padding: 28px 22px; }
+    .quote-box { padding: 22px 24px; }
+    .warning-box { padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="container">
+    <a href="#home" class="nav-logo">
+      <span class="badge">SRRU</span>
+      MSU-SND
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#benefits">Why Join</a></li>
+      <li><a href="#trainings">Trainings</a></li>
+      <li><a href="#requirements">Requirements</a></li>
+      <li><a href="#how">How to Join</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero" id="home">
+  <div class="hero-content">
+    <span class="hero-badge">🇵🇭 Official Recruitment</span>
+    <h1>MSU-SND <span>SRRU</span></h1>
+    <p class="tagline">"Sa SRRU, hindi ka lang estudyante — reservist ka! At may training pa!"</p>
+    <p class="sub">
+      The School-Based Ready Reserve Unit of Mindanao State University – Sultan Naga Dimaporo.
+      <strong>To serve the country doesn't need to be a soldier.</strong>
+    </p>
+    <div class="hero-buttons">
+      <a href="#how" class="btn btn-primary">Join Now</a>
+      <a href="#about" class="btn btn-outline">Learn More</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== WHAT IS SRRU ===== -->
+<section class="what-is" id="about">
+  <div class="container">
+    <h2 class="section-title reveal">Ano ang <span class="accent">SRRU</span>?</h2>
+    <p class="section-subtitle reveal">Ang opisyal na organisasyon ng mga ROTC graduates ng MSU-SND.</p>
+
+    <div class="what-grid">
+      <div class="what-text reveal">
+        <h3>School-Based Ready Reserve Unit</h3>
+        <p>
+          Ang <strong>SRRU</strong> ay ang opisyal na organisasyon ng mga <strong>ROTC graduates</strong>
+          ng Mindanao State University – Sultan Naga Dimaporo. Ito ay isang <strong>civic service organization</strong>
+          na naglalayong maglingkod sa komunidad at paaralan.
+        </p>
+        <p>
+          <strong>Ang SRRU ay HINDI under ng NSTP.</strong> Ito ay isang reservist organization
+          na may sariling command structure at direktang ugnayan sa Armed Forces of the Philippines.
+        </p>
+        <p>
+          <strong>Mahalagang linawin:</strong> Ang SRRU ay <strong>hindi militarisasyon</strong> ng paaralan.
+          Ang paglilingkod sa bansa ay hindi nangangailangan na maging sundalo.
+        </p>
+        <div class="legal-badges">
+          <span class="legal-badge">1987 Constitution, Art. II, Sec. 4</span>
+          <span class="legal-badge">RA 7077</span>
+          <span class="legal-badge">RA 9163</span>
+        </div>
+      </div>
+      <div class="what-image reveal">
+        <div class="shield">🛡️</div>
+        <h4>Serve the Country</h4>
+        <p>
+          Hindi kailangan maging sundalo para maglingkod sa bansa.
+          Maging handa, maging kapaki-pakinabang, maging bayani sa sariling paraan.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NOT MILITARIZATION ===== -->
+<section class="not-militarization">
+  <div class="container">
+    <h2 class="reveal">⚠️ Hindi Ito Militarization</h2>
+    <p class="reveal">
+      Ang SRRU ay isang <strong>civic service organization</strong> na naglalayong maglingkod sa komunidad
+      at paaralan. Ito ay hindi militarisasyon ng paaralan.
+    </p>
+    <p class="reveal">
+      Ang aming mga miyembro ay mga estudyante na nagboluntaryong maglingkod —
+      hindi para maging sundalo, kundi para maging <strong>handang mamamayan</strong>.
+    </p>
+    <p class="reveal">
+      Ang aming mga training — Multimedia, DRRM, Enhanced Security — ay para sa
+      <strong>paglilingkod sa kapwa</strong>, hindi para sa digmaan.
+    </p>
+    <p class="motto reveal">"To serve the country doesn't need to be a soldier."</p>
+  </div>
+</section>
+
+<!-- ===== WHY JOIN ===== -->
+<section class="why-join" id="benefits">
+  <div class="container">
+    <h2 class="section-title reveal">Bakit ka dapat <span class="accent">sumali</span>?</h2>
+    <p class="section-subtitle reveal">Hindi lang ito org — ito ay serbisyo, disiplina, at pagkakataon.</p>
+
+    <div class="benefits-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🇵🇭</div>
+        <h4>Maging Bayani</h4>
+        <p>Maglingkod sa bansa at komunidad. Hindi kailangan maging sundalo — kailangan lang maging handa.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🎖️</div>
+        <h4>Maging Leader</h4>
+        <p>Mag-training sa ilalim ng Student Commanding Officer (ROTC Advance Graduate). Matuto sa GMA at Mentor.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🚨</div>
+        <h4>Maging First Responder</h4>
+        <p>Ikaw ang unang tutugon sa campus at local emergencies. Kasama sa DRRM operations — disaster response, rescue, relief.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🛡️</div>
+        <h4>Enhanced Security</h4>
+        <p>Magpatupad ng enhanced security measures sa campus. Mag-assist sa security protocols at peace and order operations.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🏫</div>
+        <h4>Sumuporta sa Paaralan</h4>
+        <p>Ang SRRU ay dapat makatapos at makasama sa lahat ng aktibidad ng paaralan. Maging role model at pride ng MSU-SND.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🤝</div>
+        <h4>Magkaroon ng Barkada</h4>
+        <p>Kasama ang kapwa ROTC graduates. Disiplina, camaraderie, at patriotism. "Pee Bok, Nong Tum, Puen Chuay!"</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">📈</div>
+        <h4>May Advantage Ka</h4>
+        <p>Advance ROTC graduate? Qualified ka para sa officer rank sa AFP Reserve Force! Pampaganda ng resume.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRAININGS ===== -->
+<section class="trainings" id="trainings">
+  <div class="container">
+    <h2 class="section-title reveal">May mga <span class="accent">Special Trainings</span> Kami!</h2>
+    <p class="section-subtitle reveal">Hindi lang puro drills at formations. May specialized training din para sa mga miyembro ng SRRU.</p>
+
+    <div class="training-grid">
+      <div class="training-card reveal">
+        <span class="tag">Basics</span>
+        <div class="t-icon">📹</div>
+        <h4>Multimedia Training</h4>
+        <ul>
+          <li>Basic Photography — documentation ng activities</li>
+          <li>Basic Videography — pag-record ng events</li>
+          <li>Basic Video Editing — simpleng editing</li>
+          <li>Basic Social Media Management — official pages</li>
+          <li>Basic Graphic Design — posters at infographics</li>
+        </ul>
+        <p class="training-note">Lahat ng SRRU members na may interest sa multimedia. Basic level lang — walang kailangang advanced skills!</p>
+      </div>
+
+      <div class="training-card reveal">
+        <span class="tag">Core Training</span>
+        <div class="t-icon">🚨</div>
+        <h4>DRRM Training</h4>
+        <ul>
+          <li>Disaster Risk Reduction and Management (RA 10121)</li>
+          <li>Basic Life Support at First Aid</li>
+          <li>Search and Rescue (SAR) Operations</li>
+          <li>Incident Command System (ICS)</li>
+          <li>Fire Safety at Firefighting</li>
+          <li>Emergency Communications</li>
+          <li>Relief Operations</li>
+        </ul>
+        <p class="training-note">Lahat ng SRRU members. Ito ay core training ng Unit.</p>
+      </div>
+
+      <div class="training-card reveal">
+        <span class="tag">Core Training</span>
+        <div class="t-icon">🛡️</div>
+        <h4>Enhanced Security Training</h4>
+        <ul>
+          <li>Campus Security Protocols</li>
+          <li>Crowd Control at Management</li>
+          <li>Security Assessment</li>
+          <li>Coordination with Authorities</li>
+          <li>Emergency Response</li>
+        </ul>
+        <p class="training-note">Lahat ng SRRU members. Mahalagang bahagi ng aming serbisyo sa paaralan.</p>
+      </div>
+
+      <div class="training-card reveal">
+        <span class="tag chance">May Chance</span>
+        <div class="t-icon">🔫</div>
+        <h4>Firing Training</h4>
+        <ul>
+          <li>Basic Marksmanship — rifle familiarization</li>
+          <li>Weapons Handling at Safety</li>
+          <li>Live Fire Exercise — actual firing (kung ma-approve)</li>
+          <li>Marksmanship Qualification</li>
+        </ul>
+        <p class="training-note">
+          <strong>Hindi 100% sure — pero may chance na maka-sali!</strong> Selected members lang ang maa-approve.
+          Kailangan ng: good standing, completion ng basic training, approval ng SCO/CDC/ROTC Coordinator,
+          medical clearance, at attendance sa required seminars.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHO CAN JOIN ===== -->
+<section class="who-join" id="requirements">
+  <div class="container">
+    <h2 class="section-title reveal">Sino ang <span class="accent">pwede</span> sumali?</h2>
+    <p class="section-subtitle reveal">Lahat ng ROTC graduates na nakatugon sa mga sumusunod na kwalipikasyon.</p>
+
+    <div class="requirements-box reveal">
+      <h3>🎯 Mga Kwalipikasyon</h3>
+      <ul class="req-list">
+        <li>
+          <span class="req-check">✓</span>
+          <span><strong>Enrolled pa sa MSU-SND</strong> — kailangang aktibong mag-aaral</span>
+        </li>
+        <li>
+          <span class="req-check">✓</span>
+          <span><strong>Member in good standing</strong> ng Unit</span>
+        </li>
+        <li>
+          <span class="req-check">✓</span>
+          <span><strong>Good academic standing</strong> ayon sa MSU-SND regulations</span>
+        </li>
+        <li>
+          <span class="req-check">✓</span>
+          <span><strong>May leadership ability at moral integrity</strong> — certified ng CDC at ROTC Coordinator</span>
+        </li>
+        <li>
+          <span class="req-check">✓</span>
+          <span><strong>ROTC graduate</strong> — may completion certificate mula sa DMST o ROTC Unit</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SUPERVISION ===== -->
+<section class="supervision">
+  <div class="container">
+    <h2 class="section-title reveal">Ilalim ng <span class="accent">Supervision</span></h2>
+    <p class="section-subtitle reveal">Ang MSU-SND SRRU ay nasa ilalim ng mga sumusunod na ahensya.</p>
+
+    <div class="super-grid">
+      <div class="super-card reveal">
+        <div class="s-icon">🏛️</div>
+        <h4>Community Defense Center (CDC)</h4>
+        <p>Philippine Army — direct supervisor</p>
+      </div>
+      <div class="super-card reveal">
+        <div class="s-icon">🎖️</div>
+        <h4>ROTC Coordinator</h4>
+        <p>MSU-SND — operational coordination</p>
+      </div>
+      <div class="super-card reveal">
+        <div class="s-icon">🇵🇭</div>
+        <h4>Armed Forces of the Philippines (AFP)</h4>
+        <p>Major Service Reserve Command</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW TO JOIN ===== -->
+<section class="how-join" id="how">
+  <div class="container">
+    <h2 class="section-title reveal">Paano <span class="accent">sumali</span>?</h2>
+    <p class="section-subtitle reveal">Anim na hakbang para maging bahagi ng MSU-SND SRRU.</p>
+
+    <div class="steps">
+      <div class="step reveal">
+        <h4>Kunin ang Certificate</h4>
+        <p>Kunin ang ROTC completion certificate mo sa DMST o ROTC Unit.</p>
+      </div>
+      <div class="step reveal">
+        <h4>Pumunta sa Office</h4>
+        <p>Pumunta sa ROTC Coordinator's Office ng MSU-SND.</p>
+      </div>
+      <div class="step reveal">
+        <h4>Fill Out Form</h4>
+        <p>Fill out ang SRRU membership form.</p>
+      </div>
+      <div class="step reveal">
+        <h4>Attend Orientation</h4>
+        <p>Attend ng orientation at induction ceremony.</p>
+      </div>
+      <div class="step reveal">
+        <h4>Report sa SCO</h4>
+        <p>Report kay Student Commanding Officer para sa unit assignment.</p>
+      </div>
+      <div class="step reveal">
+        <h4>Pumili ng Training</h4>
+        <p>Pumili ng special training — Multimedia (Basics), DRRM, Enhanced Security, o mag-apply para sa Firing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REMINDERS ===== -->
+<section class="reminders">
+  <div class="container">
+    <h2 class="section-title reveal">Mga <span class="accent">Paalala</span></h2>
+    <p class="section-subtitle reveal">Mahalagang malaman ng bawat miyembro at aplikante.</p>
+
+    <div class="quote-box reveal">
+      <p>"The defense of the State is a prime duty of the Government and all citizens may be required, under conditions provided by law, to render personal, military, or civil service."</p>
+      <span class="source">— 1987 Philippine Constitution, Art. II, Sec. 4</span>
+    </div>
+
+    <div class="warning-box reveal">
+      <p>⚠️ <strong>Paalala:</strong> Ang firing training ay hindi 100% guaranteed — may chance na maka-sali ang mga piling miyembro na maaprubahan ng SCO, CDC, at ROTC Coordinator. Ang SRRU ay inaasahang makatapos at makasama sa lahat ng aktibidad ng paaralan. Ang mga paglabag sa membership obligations, misconduct, o non-compliance sa training requirements ay maaaring i-report sa Commission on Higher Education (CHED) at Community Defense Center (CDC) para sa appropriate action under RA 11053 (Anti-Hazing Act of 2018) at iba pang applicable laws.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<div class="cta-banner">
+  <h2>Join Now. Serve with Honor. 🇵🇭</h2>
+  <p>Multimedia. DRRM. Enhanced Security. Firing. Ikaw na!</p>
+  <a href="#contact" class="btn btn-dark">Contact Us</a>
+</div>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact">
+  <div class="container">
+    <h2 class="section-title reveal">Contact <span class="accent">Us</span></h2>
+    <p class="section-subtitle reveal">Para sa mga katanungan at aplikasyon, makipag-ugnayan sa amin.</p>
+
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <div class="c-icon">📍</div>
+        <h4>Location</h4>
+        <p>MSU-SND ROTC Coordinator's Office<br>Mindanao State University – Sultan Naga Dimaporo</p>
+      </div>
+      <div class="contact-card reveal">
+        <div class="c-icon">📧</div>
+        <h4>Email</h4>
+        <p>[your-email@msu-snd.edu.ph]</p>
+      </div>
+      <div class="contact-card reveal">
+        <div class="c-icon">📱</div>
+        <h4>Contact Number</h4>
+        <p>[+63 XXX XXX XXXX]</p>
+      </div>
+      <div class="contact-card reveal">
+        <div class="c-icon">🕐</div>
+        <h4>Office Hours</h4>
+        <p>Monday – Friday<br>8:00 AM – 5:00 PM</p>
+      </div>
+    </div>
+
+    <div class="social-links">
+      <a href="#" class="social-btn">📘 Facebook Page</a>
+      <a href="#" class="social-btn">📸 Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-logo">🎖️ MSU-SND SRRU</div>
+  <p>Discipline. Duty. Defense. Security.</p>
+  <p>Mindanao State University – Sultan Naga Dimaporo</p>
+  <p class="footer-note">
+    Ang SRRU ay itinatag alinsunod sa RA 9163 at RA 7077. Ang SRRU ay hindi militarisasyon —
+    ito ay isang civic service organization na naglalayong maglingkod sa komunidad at paaralan.
+    "To serve the country doesn't need to be a soldier."
+  </p>
+  <p style="margin-top: 20px; font-size: 0.78rem; color: rgba(229,231,235,0.3);">
+    © <span id="year"></span> MSU-SND SRRU. All rights reserved.
+  </p>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+    });
+  });
+
+  const navbar = document.querySelector('.navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.style.background = 'rgba(15, 26, 18, 0.98)';
+      navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+    } else {
+      navbar.style.background = 'rgba(15, 26, 18, 0.95)';
+      navbar.style.boxShadow = 'none';
+    }
+  });
+
+  const revealElements = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
